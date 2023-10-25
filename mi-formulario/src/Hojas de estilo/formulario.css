@@ -1,9 +1,10 @@
 .formulario-componente {
     width: 800px;
-    height: 80vh;
+    height: 90vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items:center;
     background-color: #EAFDFF;
     padding: 30px;
     color: black;
@@ -11,3 +12,6 @@
     border-radius: 5px;
     font-size: 20px;
 }
+
+
+
