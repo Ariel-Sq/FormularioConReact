@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import '../Hojas de estilo/Datos.css'
 
 
-const UsersList = () => {
-  const [users, setUsers] = useState([])
 
-  const enviar = () => {
+function IngresarDatos({ onSubmit }) {
 
-  }
-}
+  const [nombre, setNombre] = useState()
 
-
-function IngresarDatos() {
   return (
     <div className="datos-contenedor">
       <h1 className="titulo">Mi formulario</h1>
-      <input className="input" type="text" placeholder="Ingrresa tu nombre"/>
-      <input className="input" type="text" placeholder="Ingrresa tu Apellido"/>
+      <h3>Nombre</h3>
+      <input className="input" type="text" placeholder="Ingrresa tu nombre" onChange={(e) => {
+        setNombre(e.target.value)
+      }}/>
+     {/*  <input className="input" type="text" placeholder="Ingrresa tu Apellido"/>
       <input className="input" type="text" placeholder="Correo electronico"/>
       <input className="input" type="date" placeholder="Fecha de nacimiento"/>
       <select className="input-select" placeholder="Sexo">
@@ -24,10 +22,9 @@ function IngresarDatos() {
           <option>Mujer</option>
           <option>Transgénero</option>
           <option>No binario</option>
-      </select>
+      </select>*/}
       <div className="botones">
-        <button className="bt-enviar" type="submit">Enviar</button>
-        <button className="bt-info" type="button">Info</button>
+        <button className="bt-enviar" type="submit" onClick={ () => onSubmit(nombre) }>Enviar</button>
       </div>
     </div>
   )  

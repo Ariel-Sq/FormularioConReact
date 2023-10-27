@@ -4,11 +4,15 @@ import IngresarDatos from './Datos';
 
 function Formulario() {
 
+  const handleOnSubmit = (nombre) => {
+    console.log(nombre);
+  }
+
   return (
       <div>
         <div className='formulario-componente'>
           <div>
-            <IngresarDatos  />
+            <IngresarDatos onSubmit={ handleOnSubmit }  />
           </div>
         </div>
       </div>
