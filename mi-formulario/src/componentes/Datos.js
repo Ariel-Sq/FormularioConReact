@@ -20,7 +20,7 @@ function IngresarDatos({ onSubmit }) {
     <div className="datos-contenedor">
       <h1 className="titulo">Mi formulario</h1>
       <p>Nombre</p>
-      <input className="input" type="text" placeholder="Ingrresa tu nombre" onChange={(e) => {
+      <input className="input" type="text" placeholder="Ingrresa tu nombre" value={user.nombre} onChange={(e) => {
         const updateUser = {
           nombre: e.target.value,
           apellido: user.apellido,
@@ -32,7 +32,7 @@ function IngresarDatos({ onSubmit }) {
         setUser(updateUser)
       }}/>
       <p>Apellido</p>
-      <input className="input" type="text" placeholder="Ingrresa tu Apellido" onChange={(e) => {
+      <input className="input" type="text" placeholder="Ingrresa tu Apellido" value={user.apellido} onChange={(e) => {
         const updateUser = {
           nombre: user.nombre,
           apellido: e.target.value,
@@ -44,7 +44,7 @@ function IngresarDatos({ onSubmit }) {
         setUser(updateUser)
       }}/>
       <p>Correo</p>
-      <input className="input" type="text" placeholder="Correo electronico" onChange={(e) => {
+      <input className="input" type="text" placeholder="Correo electronico" value={user.correo} onChange={(e) => {
         const updateUser = {
           nombre: user.nombre,
           apellido: user.apellido,
@@ -56,7 +56,7 @@ function IngresarDatos({ onSubmit }) {
         setUser(updateUser)
       }}/>
       <p>Fecha de nacimiento</p>
-      <input className="input" type="date" placeholder="Fecha de nacimiento" onChange={(e) => {
+      <input className="input" type="date" placeholder="Fecha de nacimiento" value={user.nac} onChange={(e) => {
         const updateUser = {
           nombre: user.nombre,
           apellido: user.apellido,
@@ -68,7 +68,7 @@ function IngresarDatos({ onSubmit }) {
         setUser(updateUser)
       }}/>
       <p>Edad</p>
-      <input className="input" type="number" placeholder="Edad" onChange={(e) => {
+      <input className="input" type="number" placeholder="Edad" value={user.edad} onChange={(e) => {
         setUser((prevUser) => {
           return {
             ...prevUser,
@@ -77,7 +77,7 @@ function IngresarDatos({ onSubmit }) {
         })
       }}/>
       <p>Sexo</p>
-      <select className="input-select" placeholder="Sexo" onChange={(e) => {
+      <select className="input-select" placeholder="Sexo" value={user.sexo} onChange={(e) => {
          const updateUser = {
           ...user,
           sexo: e.target.value
@@ -91,7 +91,10 @@ function IngresarDatos({ onSubmit }) {
           <option>No binario</option>
       </select>
       <div className="botones">
-        <button className="bt-enviar" type="submit" onClick={ () => onSubmit(user) }>Enviar</button>
+        <button className="bt-enviar" type="submit" onClick={ () => {
+          onSubmit(user)
+          setUser(defaultUser)
+         } }>Enviar</button>
       </div>
     </div>
   )  
