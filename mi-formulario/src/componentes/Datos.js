@@ -5,26 +5,93 @@ import '../Hojas de estilo/Datos.css'
 
 function IngresarDatos({ onSubmit }) {
 
-  const [nombre, setNombre] = useState()
+  const defaultUser = {
+    nombre: "",
+    apellido:"",
+    correo:"",
+    nac:"",
+    edad:"",
+    sexo:""
+  }
+
+  const [user, setUser] = useState(defaultUser)
 
   return (
     <div className="datos-contenedor">
       <h1 className="titulo">Mi formulario</h1>
-      <h3>Nombre</h3>
+      <p>Nombre</p>
       <input className="input" type="text" placeholder="Ingrresa tu nombre" onChange={(e) => {
-        setNombre(e.target.value)
+        const updateUser = {
+          nombre: e.target.value,
+          apellido: user.apellido,
+          correo: user.correo,
+          nac: user.nac,
+          edad: user.edad,
+          sexo: user.sexo
+        }
+        setUser(updateUser)
       }}/>
-     {/*  <input className="input" type="text" placeholder="Ingrresa tu Apellido"/>
-      <input className="input" type="text" placeholder="Correo electronico"/>
-      <input className="input" type="date" placeholder="Fecha de nacimiento"/>
-      <select className="input-select" placeholder="Sexo">
+      <p>Apellido</p>
+      <input className="input" type="text" placeholder="Ingrresa tu Apellido" onChange={(e) => {
+        const updateUser = {
+          nombre: user.nombre,
+          apellido: e.target.value,
+          correo: user.correo,
+          nac: user.nac,
+          edad: user.edad,
+          sexo: user.sexo
+        }
+        setUser(updateUser)
+      }}/>
+      <p>Correo</p>
+      <input className="input" type="text" placeholder="Correo electronico" onChange={(e) => {
+        const updateUser = {
+          nombre: user.nombre,
+          apellido: user.apellido,
+          correo: e.target.value,
+          nac: user.nac,
+          edad: user.edad,
+          sexo: user.sexo
+        }
+        setUser(updateUser)
+      }}/>
+      <p>Fecha de nacimiento</p>
+      <input className="input" type="date" placeholder="Fecha de nacimiento" onChange={(e) => {
+        const updateUser = {
+          nombre: user.nombre,
+          apellido: user.apellido,
+          correo: user.correo,
+          nac: e.target.value,
+          edad: user.edad,
+          sexo: user.sexo
+        }
+        setUser(updateUser)
+      }}/>
+      <p>Edad</p>
+      <input className="input" type="number" placeholder="Edad" onChange={(e) => {
+        setUser((prevUser) => {
+          return {
+            ...prevUser,
+            edad: e.target.value
+          }
+        })
+      }}/>
+      <p>Sexo</p>
+      <select className="input-select" placeholder="Sexo" onChange={(e) => {
+         const updateUser = {
+          ...user,
+          sexo: e.target.value
+        }
+        setUser(updateUser)
+      }}>
+          <option>Seleccionar</option>
           <option>Hombre</option>
           <option>Mujer</option>
           <option>Transgénero</option>
           <option>No binario</option>
-      </select>*/}
+      </select>
       <div className="botones">
-        <button className="bt-enviar" type="submit" onClick={ () => onSubmit(nombre) }>Enviar</button>
+        <button className="bt-enviar" type="submit" onClick={ () => onSubmit(user) }>Enviar</button>
       </div>
     </div>
   )  

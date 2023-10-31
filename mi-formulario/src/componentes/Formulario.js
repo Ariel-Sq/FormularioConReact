@@ -4,8 +4,8 @@ import IngresarDatos from './Datos';
 
 function Formulario() {
 
-  const handleOnSubmit = (nombre) => {
-    console.log(nombre);
+  const handleOnSubmit = (user) => {
+    console.log(user);
   }
 
   return (
